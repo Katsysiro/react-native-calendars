@@ -118,8 +118,13 @@ class ExpandableCalendar extends Component {
   }
 
   componentDidMount() {
-    AccessibilityInfo.isScreenReaderEnabled().then((screenReaderEnabled) => {
-      this.setState({screenReaderEnabled});
+    //AccessibilityInfo.isScreenReaderEnabled().then((screenReaderEnabled) => {
+    //  this.setState({screenReaderEnabled});
+    //});
+    AccessibilityInfo.fetch().done(isEnabled => {
+      this.setState({
+        screenReaderEnabled: isEnabled,
+      });
     });
   }
 
